@@ -62,7 +62,12 @@ app.get("/get-roblox-action", (req, res) => {
     }
 });
 
-const port = process.env.PORT || 8080; // Railway korzysta z PORT z env
+const port = process.env.PORT || 8080;
+
+app.get("/", (req, res) => {
+    res.send("Serwer TikTok-Roblox działa poprawnie!");
+});
+
 app.listen(port, () => {
     console.log(`✅ Serwer działa na porcie ${port}`);
 });
