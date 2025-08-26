@@ -9,12 +9,11 @@ app.use(cors());
 
 let actionQueue = [];
 
-// Endpoint główny (naprawa błędu 404)
+// Endpoint testowy (sprawdza czy serwer działa)
 app.get("/", (req, res) => {
     res.send("Serwer TikTok-Roblox działa poprawnie!");
 });
 
-// Odbiór eventów z TikToka
 app.post("/tiktok-event", (req, res) => {
     const eventData = req.body;
     if (!eventData || Object.keys(eventData).length === 0) {
@@ -38,7 +37,6 @@ app.post("/tiktok-event", (req, res) => {
     res.status(200).json({ message: "Dodano do kolejki." });
 });
 
-// Pobieranie akcji do Roblox
 app.get("/get-roblox-action", (req, res) => {
     if (actionQueue.length > 0) {
         const actionsToSend = [];
@@ -62,12 +60,7 @@ app.get("/get-roblox-action", (req, res) => {
     }
 });
 
-const port = process.env.PORT || 8080;
-
-app.get("/", (req, res) => {
-    res.send("Serwer TikTok-Roblox działa poprawnie!");
-});
-
+const port = process.env.PORT || 3000;
 app.listen(port, () => {
     console.log(`✅ Serwer działa na porcie ${port}`);
 });
